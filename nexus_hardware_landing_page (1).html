@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS HARDWARE | Computadores Gamer & Periféricos High-End</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#111827',
+                            900: '#0f172a',
+                            950: '#080d1a',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        accent: {
+                            blue: '#3b82f6',
+                            hover: '#2563eb'
+                        }
+                    },
+                    boxShadow: {
+                        'amber-glow': '0 0 25px rgba(245, 158, 11, 0.2)',
+                        'blue-glow': '0 0 25px rgba(59, 130, 246, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080d1a;
+            color: #f8fafc;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080d1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.12) 0%, rgba(245, 158, 11, 0.05) 45%, transparent 80%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-amber-500 selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-slate-900 via-amber-600 to-slate-900 text-white text-xs font-semibold py-2 px-4 text-center border-b border-amber-500/20">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+            <span class="bg-amber-500 text-black px-2 py-0.5 rounded font-bold text-[10px] uppercase">Oferta do Mês</span>
+            <span>12% OFF no PIX + Frete Grátis para todo o Brasil em Computadores Montados!</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-black font-black text-xl shadow-amber-glow">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider text-white">NEXUS<span class="text-amber-500">.</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-slate-400 font-semibold">Hardware Store</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#pcs" class="hover:text-amber-500 transition-colors">PCs Gamer</a>
+                <a href="#simulador" class="hover:text-amber-500 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-gamepad text-accent-blue"></i> Simulador FPS
+                </a>
+                <a href="#perifericos" class="hover:text-amber-500 transition-colors">Periféricos</a>
+                <a href="#servicos" class="hover:text-amber-500 transition-colors">Manutenção</a>
+                <a href="#avaliacoes" class="hover:text-amber-500 transition-colors">Avaliações</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700/80 text-slate-200 transition-all">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-black font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <a href="#simulador" class="hidden sm:flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-sm py-2.5 px-5 rounded-xl transition-all shadow-amber-glow hover:scale-105">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Monte seu PC</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-amber-500 text-xs font-semibold">
+                        <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                        Montagem Profissional & Stress Test de 4 Horas
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+                        Máximo Desempenho Real em <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-400 to-accent-blue">FPS por Real Investido</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Computadores montados com gerenciamento impecável de cabos, componentes de marcas consagradas e refrigeração otimizada para você jogar sem travamentos.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#pcs" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-600 text-black font-extrabold px-8 py-4 rounded-xl shadow-amber-glow transition-all hover:-translate-y-0.5">
+                            <i class="fa-solid fa-desktop"></i>
+                            Ver PCs Prontos
+                        </a>
+                        <a href="#simulador" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-8 py-4 rounded-xl transition-all">
+                            <i class="fa-solid fa-calculator text-accent-blue"></i>
+                            Calculadora de FPS
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl font-black text-white">+14.000</p>
+                            <p class="text-xs text-slate-400 font-medium">PCs Entregues</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-white">12 Meses</p>
+                            <p class="text-xs text-slate-400 font-medium">Garantia Total</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-white">4.9/5.0 ★</p>
+                            <p class="text-xs text-slate-400 font-medium">Satisfação Clientes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500/30 to-accent-blue/30 blur-2xl"></div>
+                        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="PC Gamer Nexus High End" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                            <div class="p-6 bg-slate-900/95 border-t border-slate-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-lg font-bold text-white">PC NEXUS TITANIUM RTX</h3>
+                                    <span class="bg-amber-500/10 text-amber-500 text-xs font-bold px-2.5 py-1 rounded border border-amber-500/20">Destaque</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mb-4">Ryzen 7 7800X3D • RTX 4070 Ti Super 16GB • 32GB DDR5 • SSD 1TB Gen4</p>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <span class="text-xs text-slate-500 line-through">R$ 13.999,00</span>
+                                        <p class="text-2xl font-black text-amber-500">R$ 11.999,00 <span class="text-xs text-slate-400 font-normal">no PIX</span></p>
+                                    </div>
+                                    <button onclick="addToCart('PC NEXUS TITANIUM RTX', 11999)" class="bg-amber-500 hover:bg-amber-600 text-black font-bold p-3 rounded-xl transition-all shadow-amber-glow">
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive FPS Calculator Section -->
+    <section id="simulador" class="py-16 bg-slate-900/80 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Transparência em Desempenho</span>
+                <h2 class="text-3xl font-black text-white sm:text-4xl mt-1">Calculadora de FPS por Orçamento</h2>
+                <p class="text-slate-400 text-sm mt-2">Selecione quanto quer investir para ver a estimativa de quadros por segundo nos principais jogos.</p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Controls -->
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-sm font-semibold text-slate-300">Faixa de Investimento:</label>
+                                <span id="budgetValue" class="text-amber-500 font-black text-xl">R$ 5.500</span>
+                            </div>
+                            <input type="range" id="budgetRange" min="3000" max="15000" step="500" value="5500" oninput="updateSimulator()" class="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                            <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+                                <span>R$ 3.000</span>
+                                <span>R$ 8.500</span>
+                                <span>R$ 15.000+</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-300 mb-2">Jogo Selecionado:</label>
+                            <div class="grid grid-cols-2 gap-2" id="gameSelector">
+                                <button onclick="selectGame('cs2')" class="game-btn active p-3 rounded-xl border border-amber-500 bg-amber-500/10 text-white font-medium text-xs flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-crosshair text-amber-500"></i> CS2 / Valorant
+                                </button>
+                                <button onclick="selectGame('warzone')" class="game-btn p-3 rounded-xl border border-slate-700 bg-slate-900 text-slate-400 font-medium text-xs flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-person-rifle"></i> CoD Warzone
+                                </button>
+                                <button onclick="selectGame('cyberpunk')" class="game-btn p-3 rounded-xl border border-slate-700 bg-slate-900 text-slate-400 font-medium text-xs flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-robot"></i> Cyberpunk 2077
+                                </button>
+                                <button onclick="selectGame('gta5')" class="game-btn p-3 rounded-xl border border-slate-700 bg-slate-900 text-slate-400 font-medium text-xs flex items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-car"></i> GTA V / RP
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Card -->
+                    <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-6 text-center space-y-4">
+                        <span class="text-[11px] uppercase tracking-widest text-slate-400 font-bold">Média Estimada em 1080p Ultra</span>
+                        
+                        <div class="py-1">
+                            <span id="fpsOutput" class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-300">220+</span>
+                            <span class="block text-xs font-bold text-slate-400 mt-1">FPS Estáveis</span>
+                        </div>
+
+                        <div class="text-left bg-slate-900 p-4 rounded-lg border border-slate-800 space-y-1">
+                            <p class="text-[11px] text-amber-500 font-bold uppercase">Hardware Recomendado:</p>
+                            <p id="cpuGpuSpec" class="text-xs text-slate-200 font-semibold">Core i5 12400F + NVIDIA RTX 4060 8GB</p>
+                            <p id="ramSpec" class="text-[11px] text-slate-400">16GB DDR4 3200MHz | SSD NVMe 1TB</p>
+                        </div>
+
+                        <button onclick="addConfigToCart()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs py-3 px-4 rounded-xl transition-all shadow-amber-glow flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>Montar Esta Configuração</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pre-built PCs Section -->
+    <section id="pcs" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Prontos para Envio</span>
+            <h2 class="text-3xl font-black text-white mt-1">Computadores de Alto Desempenho</h2>
+            <p class="text-slate-400 text-sm mt-2">Testados sob estresse extremo para garantir estabilidade e temperaturas baixas.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- PC Card 1 -->
+            <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-500/40 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-56 overflow-hidden bg-slate-950">
+                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80" alt="Nexus Starter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/90 text-amber-500 text-[11px] font-bold px-2.5 py-1 rounded border border-amber-500/30">Custo x Benefício</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg">NEXUS STARTER</h3>
+                        <p class="text-xs text-amber-500 font-semibold mb-3">Ideal para CS2, Valorant, GTA V & Fortnite</p>
+                        
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-microchip text-slate-500 w-4"></i> AMD Ryzen 5 5500</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-hard-drive text-slate-500 w-4"></i> AMD Radeon RX 6600 8GB</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-memory text-slate-500 w-4"></i> 16GB RAM DDR4 (2x8GB)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-slate-500 w-4"></i> SSD NVMe 512GB High Speed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto">
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <span class="text-xs text-slate-500 line-through">R$ 3.699,00</span>
+                            <p class="text-2xl font-black text-amber-500">R$ 3.199,00</p>
+                            <span class="text-[10px] text-slate-400">à vista no PIX</span>
+                        </div>
+                        <button onclick="addToCart('NEXUS STARTER', 3199)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white font-bold p-3 rounded-xl transition-all">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PC Card 2 -->
+            <div class="glass-card rounded-2xl overflow-hidden border-amber-500/30 hover:border-amber-500/60 transition-all group flex flex-col justify-between shadow-amber-glow">
+                <div>
+                    <div class="relative h-56 overflow-hidden bg-slate-950">
+                        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80" alt="Nexus Gamer Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-amber-500 text-black text-[11px] font-black px-2.5 py-1 rounded">Mais Vendido</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg">NEXUS GAMER PRO</h3>
+                        <p class="text-xs text-amber-500 font-semibold mb-3">Quadros Altos em 1080p & 1440p Quad HD</p>
+                        
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-microchip text-slate-500 w-4"></i> Intel Core i5 13400F</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-hard-drive text-slate-500 w-4"></i> NVIDIA RTX 4060 8GB DLSS3</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-memory text-slate-500 w-4"></i> 16GB RAM DDR4 3200MHz</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-slate-500 w-4"></i> SSD NVMe 1TB M.2 Gen4</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto">
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <span class="text-xs text-slate-500 line-through">R$ 6.299,00</span>
+                            <p class="text-2xl font-black text-amber-500">R$ 5.499,00</p>
+                            <span class="text-[10px] text-slate-400">à vista no PIX</span>
+                        </div>
+                        <button onclick="addToCart('NEXUS GAMER PRO', 5499)" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold p-3 rounded-xl transition-all shadow-amber-glow">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PC Card 3 -->
+            <div class="glass-card rounded-2xl overflow-hidden hover:border-amber-500/40 transition-all group flex flex-col justify-between">
+                <div>
+                    <div class="relative h-56 overflow-hidden bg-slate-950">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Nexus Ultra Beast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/90 text-accent-blue text-[11px] font-bold px-2.5 py-1 rounded border border-accent-blue/30">Ultra Enthusiast</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg">NEXUS ULTRA BEAST</h3>
+                        <p class="text-xs text-amber-500 font-semibold mb-3">4K Ultra, Ray Tracing & Live Streaming</p>
+                        
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-microchip text-slate-500 w-4"></i> AMD Ryzen 7 7800X3D</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-hard-drive text-slate-500 w-4"></i> NVIDIA RTX 4070 Super 12GB</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-memory text-slate-500 w-4"></i> 32GB RAM DDR5 6000MHz</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-slate-500 w-4"></i> SSD 2TB Gen4 + Water Cooler 360mm</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-6 pt-0 border-t border-slate-800/80 mt-auto">
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <span class="text-xs text-slate-500 line-through">R$ 11.299,00</span>
+                            <p class="text-2xl font-black text-amber-500">R$ 9.899,00</p>
+                            <span class="text-[10px] text-slate-400">à vista no PIX</span>
+                        </div>
+                        <button onclick="addToCart('NEXUS ULTRA BEAST', 9899)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white font-bold p-3 rounded-xl transition-all">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Peripherals Section -->
+    <section id="perifericos" class="py-16 bg-slate-900/60 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Periféricos de Precisão</span>
+                <h2 class="text-3xl font-black text-white mt-1">Sua Vantagem Competitiva</h2>
+                <p class="text-slate-400 text-sm mt-2">Mouses de baixo peso, teclados de alumínio e sensores de última geração.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Peripheral 1 -->
+                <div class="glass-card rounded-xl p-5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-lg overflow-hidden mb-4 bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80" alt="MonsGeek M1 V3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[10px] text-amber-500 font-mono font-bold uppercase">Teclado Mecânico</span>
+                        <h4 class="font-bold text-white text-sm mt-0.5">MonsGeek M1 V3 Aluminium</h4>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">Estrutura Gasket Mount • CNC Alumínio</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-800">
+                        <span class="font-black text-amber-500 text-lg">R$ 649,00</span>
+                        <button onclick="addToCart('MonsGeek M1 V3 Aluminium', 649)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs font-bold p-2.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Peripheral 2 -->
+                <div class="glass-card rounded-xl p-5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-lg overflow-hidden mb-4 bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=600&q=80" alt="Ajazz AK820 Pro" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[10px] text-accent-blue font-mono font-bold uppercase">Tela TFT & Knob</span>
+                        <h4 class="font-bold text-white text-sm mt-0.5">Ajazz AK820 Pro Wireless</h4>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">Switches Gift / Flying Fish • Display LCD</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-800">
+                        <span class="font-black text-amber-500 text-lg">R$ 489,00</span>
+                        <button onclick="addToCart('Ajazz AK820 Pro Wireless', 489)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs font-bold p-2.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Peripheral 3 -->
+                <div class="glass-card rounded-xl p-5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-lg overflow-hidden mb-4 bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80" alt="VXE Dragonfly R1 Pro" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[10px] text-amber-500 font-mono font-bold uppercase">Ultraleve 48g</span>
+                        <h4 class="font-bold text-white text-sm mt-0.5">VXE Dragonfly R1 Pro</h4>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">Sensor PAW3395 • Nordic MCU • 4K Hz</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-800">
+                        <span class="font-black text-amber-500 text-lg">R$ 329,00</span>
+                        <button onclick="addToCart('VXE Dragonfly R1 Pro', 329)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs font-bold p-2.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Peripheral 4 -->
+                <div class="glass-card rounded-xl p-5 hover:border-amber-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-lg overflow-hidden mb-4 bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80" alt="Mousepad Cordura XL" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <span class="text-[10px] text-accent-blue font-mono font-bold uppercase">Superfície Control</span>
+                        <h4 class="font-bold text-white text-sm mt-0.5">Mousepad Nexus Cordura XL</h4>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">900x400mm • Resistente à Água</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-800">
+                        <span class="font-black text-amber-500 text-lg">R$ 159,00</span>
+                        <button onclick="addToCart('Mousepad Nexus Cordura XL', 159)" class="bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs font-bold p-2.5 rounded-lg transition-all">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Thermal Maintenance Section -->
+    <section id="servicos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card rounded-3xl p-8 md:p-12 border border-slate-800 relative overflow-hidden">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Manutenção Especializada</span>
+                    <h2 class="text-3xl font-black text-white">Evite o Thermal Throttling e Recupere o Desempenho do Seu PC</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Acúmulo de poeira e pastas térmicas ressecadas causam superaquecimento, perda de FPS e até danos definitivos à sua placa de vídeo e processador. Nossa equipe executa higienização química, substituição de thermal pads e testes térmicos.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <!-- Service Package 1 -->
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-5 hover:border-amber-500/50 transition-all">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-white text-sm">Limpeza Preventiva</h4>
+                                <span class="text-amber-500 font-black text-sm">R$ 149,00</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-4">Higienização com ar comprimido + Troca de pasta térmica de alta condutividade.</p>
+                            <button onclick="addToCart('Serviço: Limpeza Preventiva', 149)" class="w-full bg-slate-800 hover:bg-amber-500 hover:text-black text-white text-xs font-bold py-2 rounded-lg transition-all">
+                                Adicionar ao Carrinho
+                            </button>
+                        </div>
+
+                        <!-- Service Package 2 -->
+                        <div class="bg-slate-900/90 border border-amber-500/40 rounded-xl p-5 shadow-amber-glow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-white text-sm">Combo Nexus Overhaul</h4>
+                                <span class="text-amber-500 font-black text-sm">R$ 289,00</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-4">Desmontagem total + Pasta Thermal Grizzly + Cable Management + Troca de Thermal Pads.</p>
+                            <button onclick="addToCart('Serviço: Combo Nexus Overhaul', 289)" class="w-full bg-amber-500 hover:bg-amber-600 text-black text-xs font-extrabold py-2 rounded-lg transition-all">
+                                Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80" alt="Manutenção de Hardware" class="w-full h-72 object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Reviews -->
+    <section id="avaliacoes" class="py-16 bg-slate-900/40 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-500">Avaliações Reais</span>
+                <h2 class="text-3xl font-black text-white mt-1">O Que Nossos Clientes Dizem</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <div class="flex text-amber-500 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">"Comprei o Nexus Gamer Pro e chegou em 3 dias aqui em São Paulo! Organização de cabos impecável e temperatura em estresse não passou de 65°C."</p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center font-bold text-xs">RM</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Rodrigo M.</p>
+                            <p class="text-[10px] text-slate-500">Comprou PC Nexus Gamer Pro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <div class="flex text-amber-500 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">"O teclado MonsGeek M1 é incomparável! O peso de alumínio dá uma sensação ultra premium. Valeu cada centavo."</p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-8 h-8 rounded-full bg-accent-blue/20 text-accent-blue flex items-center justify-center font-bold text-xs">LF</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Lucas F.</p>
+                            <p class="text-[10px] text-slate-500">Comprou MonsGeek M1 V3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <div class="flex text-amber-500 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">"Mandei meu PC para a manutenção do Combo Overhaul. Diminuiu mais de 18°C na GPU no Warzone! Atendimento excelente."</p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-xs">GA</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Gabriel A.</p>
+                            <p class="text-[10px] text-slate-500">Serviço de Manutenção</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Side Cart Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+
+        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-auto w-screen max-w-md bg-slate-900 border-l border-slate-800 text-slate-200 flex flex-col justify-between shadow-2xl">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                    <h2 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-amber-500"></i> Seu Carrinho Nexus
+                    </h2>
+                    <button onclick="toggleCart()" class="text-slate-400 hover:text-white p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div class="p-6 flex-1 overflow-y-auto space-y-4" id="cartItemList">
+                    <div class="text-center py-12 text-slate-500 space-y-2">
+                        <i class="fa-solid fa-basket-shopping text-4xl block"></i>
+                        <p class="text-sm">Nenhum produto adicionado ainda.</p>
+                    </div>
+                </div>
+
+                <!-- Drawer Footer -->
+                <div class="p-6 border-t border-slate-800 space-y-4 bg-slate-950">
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Subtotal:</span>
+                            <span id="cartSubtotal">R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between text-amber-500 font-semibold">
+                            <span>Desconto PIX (12%):</span>
+                            <span id="cartDiscount">- R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between text-base font-black text-white pt-2 border-t border-slate-800">
+                            <span>Total no PIX:</span>
+                            <span id="cartTotal" class="text-amber-500">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <button onclick="checkout()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold py-3.5 rounded-xl shadow-amber-glow transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Finalizar Pedido no WhatsApp</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <a href="#" class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-black font-black text-sm">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <span class="text-lg font-black text-white">NEXUS<span class="text-amber-500">.</span></span>
+                </a>
+                <p class="text-slate-500 leading-relaxed">Computadores gamer de alta performance, periféricos de precisão e manutenção técnica especializada.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Navegação</h4>
+                <ul class="space-y-2">
+                    <li><a href="#pcs" class="hover:text-amber-500 transition-colors">Computadores Gamer</a></li>
+                    <li><a href="#simulador" class="hover:text-amber-500 transition-colors">Simulador de FPS</a></li>
+                    <li><a href="#perifericos" class="hover:text-amber-500 transition-colors">Periféricos Enthusiast</a></li>
+                    <li><a href="#servicos" class="hover:text-amber-500 transition-colors">Manutenção e Limpeza</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Atendimento</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><i class="fa-brands fa-whatsapp text-amber-500 mr-2"></i> (11) 99887-6655</li>
+                    <li><i class="fa-regular fa-envelope text-amber-500 mr-2"></i> vendas@nexushardware.com.br</li>
+                    <li><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i> São Paulo - SP</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3">Pagamento & Segurança</h4>
+                <div class="flex flex-wrap gap-3 text-slate-300 text-xl mb-3">
+                    <i class="fa-brands fa-pix text-emerald-400" title="PIX"></i>
+                    <i class="fa-brands fa-cc-visa text-blue-400" title="Visa"></i>
+                    <i class="fa-brands fa-cc-mastercard text-orange-400" title="Mastercard"></i>
+                </div>
+                <p class="text-[10px] text-slate-500">Garantia de 12 meses e Nota Fiscal em todos os produtos.</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-900 pt-6 text-center text-slate-600">
+            <p>© 2026 NEXUS HARDWARE. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-amber-500 text-black font-extrabold px-4 py-3 rounded-xl shadow-amber-glow transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 pointer-events-none text-xs">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="toastMsg">Produto adicionado ao carrinho!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let cart = [];
+        let currentGame = 'cs2';
+
+        const gameData = {
+            'cs2': { name: 'CS2 / Valorant', multiplier: 0.04 },
+            'warzone': { name: 'CoD Warzone', multiplier: 0.016 },
+            'cyberpunk': { name: 'Cyberpunk 2077', multiplier: 0.009 },
+            'gta5': { name: 'GTA V / RP', multiplier: 0.022 }
+        };
+
+        function updateSimulator() {
+            const budget = parseInt(document.getElementById('budgetRange').value);
+            document.getElementById('budgetValue').innerText = `R$ ${budget.toLocaleString('pt-BR')}`;
+            
+            const game = gameData[currentGame];
+            const fps = Math.round(budget * game.multiplier);
+            document.getElementById('fpsOutput').innerText = `${fps}+`;
+
+            const cpuGpu = document.getElementById('cpuGpuSpec');
+            const ram = document.getElementById('ramSpec');
+
+            if (budget < 4500) {
+                cpuGpu.innerText = "AMD Ryzen 5 5500 + Radeon RX 6600 8GB";
+                ram.innerText = "16GB RAM DDR4 | SSD 512GB";
+            } else if (budget < 7500) {
+                cpuGpu.innerText = "Core i5 13400F + NVIDIA RTX 4060 8GB";
+                ram.innerText = "16GB RAM DDR4 | SSD 1TB NVMe";
+            } else if (budget < 11000) {
+                cpuGpu.innerText = "AMD Ryzen 7 7700X + NVIDIA RTX 4070 Super 12GB";
+                ram.innerText = "32GB RAM DDR5 | SSD 1TB Gen4";
+            } else {
+                cpuGpu.innerText = "AMD Ryzen 7 7800X3D + NVIDIA RTX 4070 Ti Super 16GB";
+                ram.innerText = "32GB RAM DDR5 6000MHz | SSD 2TB Gen4";
+            }
+        }
+
+        function selectGame(gameKey) {
+            currentGame = gameKey;
+            document.querySelectorAll('.game-btn').forEach(btn => {
+                btn.classList.remove('border-amber-500', 'bg-amber-500/10', 'text-white');
+                btn.classList.add('border-slate-700', 'bg-slate-900', 'text-slate-400');
+            });
+            event.currentTarget.classList.remove('border-slate-700', 'bg-slate-900', 'text-slate-400');
+            event.currentTarget.classList.add('border-amber-500', 'bg-amber-500/10', 'text-white');
+            updateSimulator();
+        }
+
+        function addConfigToCart() {
+            const budget = parseInt(document.getElementById('budgetRange').value);
+            const spec = document.getElementById('cpuGpuSpec').innerText;
+            addToCart(`PC Configurado (${spec})`, budget);
+        }
+
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`${name} adicionado ao carrinho!`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cartCount');
+            const listEl = document.getElementById('cartItemList');
+            
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            countEl.innerText = totalItems;
+
+            if (cart.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center py-12 text-slate-500 space-y-2">
+                        <i class="fa-solid fa-basket-shopping text-4xl block"></i>
+                        <p class="text-sm">Nenhum produto adicionado ainda.</p>
+                    </div>
+                `;
+                document.getElementById('cartSubtotal').innerText = 'R$ 0,00';
+                document.getElementById('cartDiscount').innerText = '- R$ 0,00';
+                document.getElementById('cartTotal').innerText = 'R$ 0,00';
+                return;
+            }
+
+            let subtotal = 0;
+            listEl.innerHTML = cart.map((item, index) => {
+                subtotal += item.price * item.qty;
+                return `
+                    <div class="flex items-center justify-between p-3 bg-slate-950 rounded-xl border border-slate-800">
+                        <div>
+                            <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                            <p class="text-[11px] text-amber-500 mt-0.5">R$ ${item.price.toLocaleString('pt-BR')} x ${item.qty}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-slate-500 hover:text-red-400 p-2 text-xs">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            const discount = subtotal * 0.12;
+            const total = subtotal - discount;
+
+            document.getElementById('cartSubtotal').innerText = `R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('cartDiscount').innerText = `- R$ ${discount.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('cartTotal').innerText = `R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+        }
+
+        function toggleCart() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Seu carrinho está vazio!');
+                return;
+            }
+            const summary = cart.map(i => `- ${i.name} (x${i.qty})`).join('%0A');
+            const total = document.getElementById('cartTotal').innerText;
+            const msg = `Olá! Gostaria de finalizar a compra do pedido:%0A${summary}%0A%0ATotal no PIX: ${total}`;
+            window.open(`https://wa.me/5511998876655?text=${msg}`, '_blank');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        window.onload = function() {
+            updateSimulator();
+        };
+    </script>
+</body>
+</html>
